@@ -340,26 +340,94 @@ Return ONLY the JSON object with no additional text."""
                     json_text = json_text[:-3]
                 json_text = json_text.strip()
                 
-                # Parse JSON - should work directly with JSON mode
+                # Parse JSON with robust error handling
                 try:
                     analysis = json.loads(json_text)
                     logger.debug(f"Successfully parsed JSON response (JSON mode)")
                 except json.JSONDecodeError as e:
-                    # JSON mode should prevent this, but handle just in case
+                    # JSON mode should prevent this, but Gemini sometimes returns malformed JSON
                     logger.warning(f"JSON parse error even with JSON mode: {e}")
                     
-                    # Try to fix common issues
-                    # 1. Replace unescaped newlines in strings
+                    # Try to repair the JSON by fixing common issues
                     import re
-                    json_text_fixed = re.sub(r'(?<!\\)\n', '\\n', json_text)
                     
-                    # 2. Try parsing again
+                    # Strategy: Only escape newlines/tabs that are INSIDE string values
+                    # This is complex, so we'll use a simpler approach:
+                    # Try to find and complete the JSON object
+                    
+                    json_text_fixed = json_text
+                    
+                    # Fix 1: Remove trailing commas before closing braces/brackets
+                    json_text_fixed = re.sub(r',(\s*[}\]])', r'\1', json_text_fixed)
+                    
+                    # Fix 2: Try to find the last complete JSON object
+                    # Count braces to find where the JSON might be truncated
                     try:
+                        # First try with just trailing comma fix
                         analysis = json.loads(json_text_fixed)
-                        logger.debug(f"Successfully parsed JSON after fixing newlines")
-                    except json.JSONDecodeError:
-                        # Still failed, raise original error
-                        raise e
+                        logger.debug(f"Successfully parsed JSON after removing trailing commas")
+                    except json.JSONDecodeError as e2:
+                        # Try to extract valid JSON portion if truncated
+                        try:
+                            depth = 0
+                            last_valid_pos = 0
+                            in_string = False
+                            escape_next = False
+                            
+                            for i, char in enumerate(json_text_fixed):
+                                if escape_next:
+                                    escape_next = False
+                                    continue
+                                
+                                if char == '\\':
+                                    escape_next = True
+                                    continue
+                                
+                                if char == '"' and not escape_next:
+                                    in_string = not in_string
+                                
+                                if not in_string:
+                                    if char == '{' or char == '[':
+                                        depth += 1
+                                    elif char == '}' or char == ']':
+                                        depth -= 1
+                                        if depth == 0:
+                                            last_valid_pos = i + 1
+                            
+                            if last_valid_pos > 0:
+                                json_text_fixed = json_text_fixed[:last_valid_pos]
+                                analysis = json.loads(json_text_fixed)
+                                logger.debug(f"Successfully parsed truncated JSON")
+                            else:
+                                # Last resort: try to close the JSON manually
+                                # Count open braces/brackets and close them
+                                open_braces = json_text_fixed.count('{') - json_text_fixed.count('}')
+                                open_brackets = json_text_fixed.count('[') - json_text_fixed.count(']')
+                                
+                                # Remove any incomplete string at the end
+                                if json_text_fixed.count('"') % 2 != 0:
+                                    # Odd number of quotes - incomplete string
+                                    last_quote = json_text_fixed.rfind('"')
+                                    if last_quote > 0:
+                                        # Find the comma or brace before this incomplete string
+                                        search_pos = last_quote - 1
+                                        while search_pos > 0 and json_text_fixed[search_pos] not in [',', '{', '[']:
+                                            search_pos -= 1
+                                        if json_text_fixed[search_pos] == ',':
+                                            json_text_fixed = json_text_fixed[:search_pos]
+                                        else:
+                                            json_text_fixed = json_text_fixed[:last_quote]
+                                
+                                # Close the JSON
+                                json_text_fixed += ']' * open_brackets
+                                json_text_fixed += '}' * open_braces
+                                
+                                analysis = json.loads(json_text_fixed)
+                                logger.debug(f"Successfully parsed JSON after manual closure")
+                        except Exception as e3:
+                            # All repair attempts failed
+                            logger.error(f"JSON repair failed. Original error: {e}")
+                            raise e
                 
                 # CRITICAL FIX: Clean up malformed keys with embedded newlines/whitespace
                 # Sometimes Gemini returns keys like "\n    \"scene_type\"" instead of "scene_type"
@@ -427,7 +495,27 @@ Return ONLY the JSON object with no additional text."""
                         if json_text.endswith("```"): json_text = json_text[:-3]
                         json_text = json_text.strip()
                         
-                        analysis = json.loads(json_text)
+                        # Robust JSON parsing with repair
+                        try:
+                            analysis = json.loads(json_text)
+                        except json.JSONDecodeError as parse_err:
+                            import re
+                            json_text_fixed = re.sub(r',(\s*[}\]])', r'\1', json_text)
+                            try:
+                                analysis = json.loads(json_text_fixed)
+                            except:
+                                # Try truncation
+                                depth = 0
+                                last_valid = 0
+                                for i, c in enumerate(json_text_fixed):
+                                    if c in '{[': depth += 1
+                                    elif c in '}]':
+                                        depth -= 1
+                                        if depth == 0: last_valid = i + 1
+                                if last_valid > 0:
+                                    analysis = json.loads(json_text_fixed[:last_valid])
+                                else:
+                                    raise parse_err
                         
                         # Clean malformed keys
                         def clean_dict_keys(obj):
@@ -552,7 +640,7 @@ Return ONLY the JSON object with no additional text."""
                     }
                 )
                 
-                # Parse JSON response
+                # Parse JSON response with robust error handling
                 json_text = response.text.strip()
                 
                 # Clean up common formatting issues
@@ -564,7 +652,67 @@ Return ONLY the JSON object with no additional text."""
                     json_text = json_text[:-3]
                 json_text = json_text.strip()
                 
-                analysis = json.loads(json_text)
+                # Try parsing with robust error handling
+                try:
+                    analysis = json.loads(json_text)
+                except json.JSONDecodeError as e:
+                    logger.warning(f"JSON parse error, attempting repair: {e}")
+                    
+                    import re
+                    json_text_fixed = json_text
+                    
+                    # Fix 1: Remove trailing commas
+                    json_text_fixed = re.sub(r',(\s*[}\]])', r'\1', json_text_fixed)
+                    
+                    try:
+                        analysis = json.loads(json_text_fixed)
+                        logger.debug(f"Successfully parsed JSON after repair")
+                    except json.JSONDecodeError:
+                        # Try extracting valid JSON portion
+                        try:
+                            depth = 0
+                            last_valid_pos = 0
+                            in_string = False
+                            escape_next = False
+                            
+                            for i, char in enumerate(json_text_fixed):
+                                if escape_next:
+                                    escape_next = False
+                                    continue
+                                if char == '\\':
+                                    escape_next = True
+                                    continue
+                                if char == '"' and not escape_next:
+                                    in_string = not in_string
+                                if not in_string:
+                                    if char == '{' or char == '[':
+                                        depth += 1
+                                    elif char == '}' or char == ']':
+                                        depth -= 1
+                                        if depth == 0:
+                                            last_valid_pos = i + 1
+                            
+                            if last_valid_pos > 0:
+                                json_text_fixed = json_text_fixed[:last_valid_pos]
+                                analysis = json.loads(json_text_fixed)
+                                logger.debug(f"Successfully parsed truncated JSON")
+                            else:
+                                # Manual closure attempt
+                                open_braces = json_text_fixed.count('{') - json_text_fixed.count('}')
+                                open_brackets = json_text_fixed.count('[') - json_text_fixed.count(']')
+                                if json_text_fixed.count('"') % 2 != 0:
+                                    last_quote = json_text_fixed.rfind('"')
+                                    if last_quote > 0:
+                                        search_pos = last_quote - 1
+                                        while search_pos > 0 and json_text_fixed[search_pos] not in [',', '{', '[']:
+                                            search_pos -= 1
+                                        if json_text_fixed[search_pos] == ',':
+                                            json_text_fixed = json_text_fixed[:search_pos]
+                                json_text_fixed += ']' * open_brackets + '}' * open_braces
+                                analysis = json.loads(json_text_fixed)
+                                logger.debug(f"Successfully parsed JSON after manual closure")
+                        except:
+                            raise e
                 
                 # Clean malformed keys with embedded newlines
                 def clean_dict_keys(obj):

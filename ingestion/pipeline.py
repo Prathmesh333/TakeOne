@@ -306,26 +306,28 @@ class TakeOnePipeline:
                 # Use thumbnails for Gemini analysis
                 gemini_clips = []
                 for clip in clips:
-                    clip_info = clip.copy()
+                    # Create a DEEP COPY to avoid modifying original clip_info
+                    gemini_clip_info = clip.copy()
                     
                     # Use thumbnail image instead of video clip
-                    if clip_info.get('thumbnail_path'):
-                        thumb_path = Path(clip_info['thumbnail_path'])
+                    if gemini_clip_info.get('thumbnail_path'):
+                        thumb_path = Path(gemini_clip_info['thumbnail_path'])
                         
                         # Verify thumbnail exists
                         if thumb_path.exists():
-                            # Replace clip_path with thumbnail_path for Gemini
-                            clip_info['clip_path'] = str(thumb_path)
-                            clip_info['is_thumbnail'] = True
+                            # Replace clip_path with thumbnail_path for Gemini ONLY
+                            # This does NOT affect the original clip dict
+                            gemini_clip_info['clip_path'] = str(thumb_path)
+                            gemini_clip_info['is_thumbnail'] = True
                             logger.debug(f"Using thumbnail for Gemini: {thumb_path.name}")
                         else:
                             logger.error(f"Thumbnail missing: {thumb_path}, skipping clip")
                             continue  # Skip this clip
                     else:
-                        logger.warning(f"No thumbnail for clip {clip_info.get('clip_path')}, skipping")
+                        logger.warning(f"No thumbnail for clip {gemini_clip_info.get('clip_path')}, skipping")
                         continue  # Skip clips without thumbnails
                     
-                    gemini_clips.append(clip_info)
+                    gemini_clips.append(gemini_clip_info)
                 
                 logger.info(f"  Sending {len(gemini_clips)} thumbnails (images) to Gemini")
                 
@@ -333,6 +335,18 @@ class TakeOnePipeline:
                     gemini_clips,
                     progress_callback=analysis_progress
                 )
+                
+                # CRITICAL FIX: Restore original clip paths from 'clips' list
+                # The gemini_clips had thumbnail paths, but we need video clip paths for indexing
+                for i, result in enumerate(analysis_results):
+                    if result.get('status') == 'success' and result.get('clip_info'):
+                        clip_index = result['clip_info'].get('clip_index')
+                        # Find original clip by index
+                        original_clip = next((c for c in clips if c.get('clip_index') == clip_index), None)
+                        if original_clip:
+                            # Restore the ORIGINAL clip_path (video .mp4, not thumbnail .jpg)
+                            result['clip_info']['clip_path'] = original_clip['clip_path']
+                            logger.debug(f"Restored clip path: {original_clip['clip_path']}")
                 
                 success_count = sum(1 for r in analysis_results if r['status'] == 'success')
                 

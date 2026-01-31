@@ -39,21 +39,32 @@ st.markdown("""
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     
-    /* Global Theme Variables */
+    /* Cinema-Inspired Color Palette */
     :root {
-        --primary: #6366f1;
-        --primary-dark: #4f46e5;
-        --secondary: #8b5cf6;
-        --accent: #06b6d4;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --error: #ef4444;
-        --bg-dark: #0f172a;
-        --bg-card: #1e293b;
-        --bg-hover: #334155;
-        --text-primary: #f1f5f9;
-        --text-secondary: #94a3b8;
-        --border: #334155;
+        /* Primary Colors */
+        --bg-primary: #0D1117;        /* Deep Slate - Professional dark-room aesthetic */
+        --bg-secondary: #161B22;      /* Charcoal - Cards and UI elements */
+        --bg-hover: #21262D;          /* Slightly lighter for hover states */
+        
+        /* Accent Colors */
+        --accent-cyan: #00E5FF;       /* Electric Cyan - AI Glow, high-energy */
+        --accent-rust: #E64A19;       /* Cinema Rust - Action, Rec/Play buttons */
+        --accent-cyan-dim: #00B8D4;   /* Dimmed cyan for subtle effects */
+        --accent-rust-dim: #D84315;   /* Dimmed rust for hover states */
+        
+        /* Text Colors */
+        --text-primary: #F0F6FC;      /* High-Key White - Clear readability */
+        --text-secondary: #8B949E;    /* Muted gray for secondary text */
+        --text-tertiary: #6E7681;     /* Even more muted for hints */
+        
+        /* Semantic Colors */
+        --success: #00E5FF;           /* Use cyan for success (AI theme) */
+        --warning: #E64A19;           /* Use rust for warnings/actions */
+        --error: #F85149;             /* Bright red for errors */
+        
+        /* Borders & Dividers */
+        --border: #30363D;            /* Subtle borders */
+        --border-bright: #484F58;     /* Brighter borders for focus */
     }
 
     /* Global Styles */
@@ -62,7 +73,7 @@ st.markdown("""
     }
     
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        background: var(--bg-primary);
         color: var(--text-primary);
     }
 
@@ -75,7 +86,7 @@ st.markdown("""
 
     /* --- SIDEBAR --- */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        background: var(--bg-secondary);
         border-right: 1px solid var(--border);
     }
     
@@ -101,8 +112,9 @@ st.markdown("""
     section[data-testid="stSidebar"] .stButton > button:hover {
         background: var(--bg-hover);
         color: var(--text-primary);
-        border-color: var(--primary);
+        border-color: var(--accent-cyan);
         transform: translateX(2px);
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
     }
     
     section[data-testid="stSidebar"] .stButton > button:active {
@@ -119,13 +131,14 @@ st.markdown("""
     .hero-title {
         font-size: 3.5rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-rust) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-bottom: 1rem;
         letter-spacing: -0.02em;
         line-height: 1.1;
+        text-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
     }
     
     .hero-subtitle {
@@ -140,37 +153,38 @@ st.markdown("""
 
     /* --- CARDS --- */
     .card {
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         border: 1px solid var(--border);
         border-radius: 1rem;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
     
     .card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        border-color: var(--primary);
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.2), 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        border-color: var(--accent-cyan);
     }
 
     /* --- BUTTONS --- */
     .stButton > button {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-cyan-dim) 100%);
+        color: var(--bg-primary);
         border: none;
         border-radius: 0.75rem;
         padding: 0.75rem 1.5rem;
         font-weight: 600;
         font-size: 0.95rem;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
     }
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+        background: var(--accent-cyan);
     }
     
     .stButton > button:active {
@@ -179,7 +193,7 @@ st.markdown("""
     
     /* Secondary button */
     .stButton > button[kind="secondary"] {
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         border: 1px solid var(--border);
         color: var(--text-primary);
         box-shadow: none;
@@ -187,7 +201,7 @@ st.markdown("""
     
     .stButton > button[kind="secondary"]:hover {
         background: var(--bg-hover);
-        border-color: var(--primary);
+        border-color: var(--border-bright);
     }
 
     /* --- BADGES --- */
@@ -204,20 +218,21 @@ st.markdown("""
     }
     
     .badge-score {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        color: white;
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-cyan-dim) 100%);
+        color: var(--bg-primary);
+        box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
     }
     
     .badge-mood {
-        background: rgba(6, 182, 212, 0.15);
-        color: #06b6d4;
-        border: 1px solid rgba(6, 182, 212, 0.3);
+        background: rgba(0, 229, 255, 0.15);
+        color: var(--accent-cyan);
+        border: 1px solid rgba(0, 229, 255, 0.3);
     }
     
     .badge-type {
-        background: rgba(139, 92, 246, 0.15);
-        color: #a78bfa;
-        border: 1px solid rgba(139, 92, 246, 0.3);
+        background: rgba(230, 74, 25, 0.15);
+        color: var(--accent-rust);
+        border: 1px solid rgba(230, 74, 25, 0.3);
     }
     
     .badge:hover {
@@ -229,7 +244,7 @@ st.markdown("""
         display: inline-block;
         font-size: 0.75rem;
         color: var(--text-secondary);
-        background: var(--bg-dark);
+        background: var(--bg-primary);
         padding: 0.25rem 0.75rem;
         border-radius: 0.5rem;
         margin: 0.25rem;
@@ -239,14 +254,15 @@ st.markdown("""
     
     .tag:hover {
         background: var(--bg-hover);
-        color: var(--text-primary);
-        border-color: var(--primary);
+        color: var(--accent-cyan);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
     }
 
     /* --- INPUT FIELDS --- */
     .stTextInput > div > div > input,
     .stTextArea > div > div > textarea {
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         color: var(--text-primary);
         border: 1px solid var(--border);
         border-radius: 0.75rem;
@@ -257,8 +273,9 @@ st.markdown("""
     
     .stTextInput > div > div > input:focus,
     .stTextArea > div > div > textarea:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1);
+        background: var(--bg-primary);
     }
     
     .stTextInput > div > div > input::placeholder {
@@ -267,20 +284,21 @@ st.markdown("""
 
     /* --- SELECT BOXES --- */
     .stSelectbox > div > div {
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         border: 1px solid var(--border);
         border-radius: 0.75rem;
     }
 
     /* --- PROGRESS BARS --- */
     .stProgress > div > div > div {
-        background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-rust) 100%);
         border-radius: 9999px;
+        box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
     }
 
     /* --- EXPANDER --- */
     .streamlit-expanderHeader {
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         border: 1px solid var(--border);
         border-radius: 0.75rem;
         padding: 1rem 1.25rem;
@@ -290,12 +308,12 @@ st.markdown("""
     
     .streamlit-expanderHeader:hover {
         background: var(--bg-hover);
-        border-color: var(--primary);
+        border-color: var(--accent-cyan);
     }
 
     /* --- METRICS --- */
     .stMetric {
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         padding: 1rem;
         border-radius: 0.75rem;
         border: 1px solid var(--border);
@@ -308,16 +326,18 @@ st.markdown("""
     }
     
     .stMetric [data-testid="stMetricValue"] {
-        color: var(--text-primary);
+        color: var(--accent-cyan);
         font-size: 1.875rem;
         font-weight: 700;
+        text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
     }
 
     /* --- VIDEO PLAYER --- */
     .stVideo {
         border-radius: 0.75rem;
         overflow: hidden;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+        border: 1px solid var(--border);
     }
 
     /* --- ALERTS --- */
@@ -329,25 +349,25 @@ st.markdown("""
     
     /* Success */
     [data-testid="stAlert"][data-baseweb="notification"] > div:first-child {
-        background: rgba(16, 185, 129, 0.1);
+        background: rgba(0, 229, 255, 0.1);
         border-left: 4px solid var(--success);
     }
     
     /* Info */
     .stInfo {
-        background: rgba(6, 182, 212, 0.1);
-        border-left: 4px solid var(--accent);
+        background: rgba(0, 229, 255, 0.1);
+        border-left: 4px solid var(--accent-cyan);
     }
     
     /* Warning */
     .stWarning {
-        background: rgba(245, 158, 11, 0.1);
+        background: rgba(230, 74, 25, 0.1);
         border-left: 4px solid var(--warning);
     }
     
     /* Error */
     .stError {
-        background: rgba(239, 68, 68, 0.1);
+        background: rgba(248, 81, 73, 0.1);
         border-left: 4px solid var(--error);
     }
 
@@ -364,17 +384,18 @@ st.markdown("""
     }
     
     .icon-primary {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
+        background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-cyan-dim) 100%);
+        color: var(--bg-primary);
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
     }
     
     .icon-success {
-        background: rgba(16, 185, 129, 0.15);
+        background: rgba(0, 229, 255, 0.15);
         color: var(--success);
     }
     
     .icon-warning {
-        background: rgba(245, 158, 11, 0.15);
+        background: rgba(230, 74, 25, 0.15);
         color: var(--warning);
     }
 
@@ -537,21 +558,20 @@ def load_legacy_models():
 
 def render_sidebar():
     with st.sidebar:
-        # Logo and title in single container
+        # Logo and title with TakeOne clapperboard icon
         st.markdown("""
-        <div style="display: flex; align-items: center; padding: 1.5rem 0 2rem 0; gap: 1rem;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M10 9L15 12L10 15V9Z" fill="url(#gradient)"/>
+        <div style="display: flex; align-items: center; padding: 1rem 0 1.5rem 0; gap: 0.75rem;">
+            <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
                 <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#E64A19;stop-opacity:1" />
                     </linearGradient>
                 </defs>
+                <path d="M60.131 21.423H35.659l24.279-2.656l1.878-.206l-.224-1.876l-1.53-12.849l-.183-1.524l-1.527-.12l-2.22-.173L55.888 2l-.24.044l-51.923 9.565L2 11.927l.207 1.744l.404 3.397v16.381l.477.029v16.524l1.473.32l52.982 11.516l.746.162l.646-.408l2.191-1.383l.874-.55V21.423h-1.869M55.985 3.884l2.22.174l1.37 11.494l-1.739-2.536l-6.791-8.222l4.94-.91M42.58 6.354l9.299 11.413l-8.489.929l-8.431-10.938l7.621-1.404M28.059 9.029l7.692 10.503l-6.908.756l-7.046-10.105l6.262-1.154m-11.981 2.206l6.482 9.74l-5.731.626l-5.988-9.401l5.237-.965m-5.461 15.844l-2.77-3.601l.096-.184h4.72l-2.046 3.785m1.064 3.165c0 .55-.393.973-.874.946c-.479-.027-.863-.488-.863-1.029s.385-.965.863-.945c.481.018.874.479.874 1.028M4.516 17.246l-.453-3.797l1.961-.361l5.554 9.089l-1.146.125l-2.766.303l-.588-1l-2.562-4.359M6.474 22.8c0 .525-.359.952-.799.957c-.437.002-.787-.414-.787-.931c0-.519.351-.945.787-.957c.439-.011.799.406.799.931m-.799 6.213c.439.018.799.457.799.982c0 .525-.359.929-.799.903c-.437-.024-.787-.463-.787-.98c0-.518.35-.922.787-.905m54.456 15.454l-1.867.482l-43.419-5.381v4.129l43.419 6.875l1.867-.797v1.365l-1.867.814l-53.307-8.87v-.948l8.956 1.414v-4.098l-8.956-1.11v-.948l53.307 6.174l1.867-.468v1.367m0-8.235l-1.867.311l-53.307-3.89v-.923l9.713.62l-1.161-1.51l4.27-7.546h5.096l-5.473 9.183l5.727.369l6.006-9.552h6.882l-6.614 9.957l6.905.445l7.319-10.402h8.458L43.94 34.189l8.485.547l5.937-7.888l1.769-3.007v12.391" fill="url(#logoGradient)"/>
             </svg>
-            <div>
-                <div style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2;">TakeOne</div>
+            <div style="flex: 1;">
+                <div style="font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #00E5FF 0%, #E64A19 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.3));">TakeOne</div>
                 <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.125rem;">AI Video Search</div>
             </div>
         </div>
@@ -559,53 +579,36 @@ def render_sidebar():
         
         st.markdown("---")
         
-        # Navigation buttons - clean and professional with SVG icons
+        # Navigation buttons with custom icons
         st.markdown('<div style="font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Navigation</div>', unsafe_allow_html=True)
         
-        # Custom CSS for navigation buttons with icons
         home_active = st.session_state.active_tab == "Home"
         library_active = st.session_state.active_tab == "Library"
         
-        st.markdown("""
-        <style>
-        /* Hide default button styling for nav buttons */
-        div[data-testid="stSidebar"] button[kind="secondary"] p {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-        
-        # Home button
-        home_icon = """
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
-            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        """
-        
-        col1, col2 = st.columns([1, 6])
+        # Home button with smiley icon
+        col1, col2 = st.columns([1, 5])
         with col1:
-            st.markdown(home_icon, unsafe_allow_html=True)
+            st.markdown("""
+            <svg width="20" height="20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+                <path d="M35 27.869A7.994 7.994 0 0 1 28 32h14a7.994 7.994 0 0 1-7-4.131" fill="currentColor"></path>
+                <circle cx="28" cy="24" r="3" fill="currentColor"></circle>
+                <circle cx="42" cy="24" r="3" fill="currentColor"></circle>
+                <path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2m14 30c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H23c-1.1 0-2-.9-2-2v-.5L16 48V32l5 2.5V34c0-1.1.9-2 2-2h5a8 8 0 0 1 0-16a7.994 7.994 0 0 1 7 4.131A7.994 7.994 0 0 1 42 16a8 8 0 0 1 0 16h4" fill="currentColor"></path>
+            </svg>
+            """, unsafe_allow_html=True)
         with col2:
             if st.button("Home", key="nav_home", use_container_width=True, type="primary" if home_active else "secondary"):
                 st.session_state.active_tab = "Home"
                 st.rerun()
         
-        # Library button
-        library_icon = """
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
-            <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        """
-        
-        col1, col2 = st.columns([1, 6])
+        # Library button with book icon
+        col1, col2 = st.columns([1, 5])
         with col1:
-            st.markdown(library_icon, unsafe_allow_html=True)
+            st.markdown("""
+            <svg width="20" height="20" viewBox="-0.5 0 21 21" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+                <path d="M20.9999958,3.25 L20.9999958,19.5018874 C14.9999958,19.1144138 11.9999958,19.6137847 11.9999958,21 C11.9999958,21 11.9999958,9.95538748 11.9999958,5.61908 C11.9999958,3.25632105 14.9999958,2.46662772 20.9999958,3.25 Z M2.99999577,3.25 L2.99999577,19.5018874 L3.74965625,19.4572404 L3.74965625,19.4572404 L4.4667228,19.4222285 L4.4667228,19.4222285 L5.15119541,19.3968519 L5.15119541,19.3968519 L5.80307409,19.3811106 C5.90900437,19.37929 6.01357658,19.3778708 6.1167907,19.3768531 L6.71977848,19.3755647 L6.71977848,19.3755647 L7.29017232,19.3839114 L7.29017232,19.3839114 L7.82797223,19.4018935 L7.82797223,19.4018935 L8.33317821,19.4295108 C8.49614788,19.4403224 8.65368522,19.4527399 8.80579025,19.4667633 L9.24580836,19.5136511 C11.0113131,19.7290903 11.9280175,20.1954475 11.9959215,20.9127226 L11.9999958,20.9661174 L11.9999958,20.9661174 L11.9999958,5.61908 L11.9999958,5.61908 C11.9999958,3.69029719 10.0008288,2.809788 6.00249473,2.97755244 L5.38775087,3.01057916 C5.28279461,3.01739396 5.17658886,3.02486392 5.06913363,3.03298906 L4.40940852,3.08960194 C4.18450223,3.11109358 3.95459802,3.13520591 3.7196959,3.16193892 L2.99999577,3.25 L2.99999577,3.25 Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            """, unsafe_allow_html=True)
         with col2:
             if st.button("Library", key="nav_library", use_container_width=True, type="primary" if library_active else "secondary"):
                 st.session_state.active_tab = "Library"
@@ -613,24 +616,37 @@ def render_sidebar():
         
         st.markdown("---")
         
-        # Stats section
-        st.markdown('<div style="font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Statistics</div>', unsafe_allow_html=True)
+        # Stats section with icon
+        st.markdown("""
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <svg width="16" height="16" viewBox="0 0 1800 1800" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                <path fill="currentColor" d="M223.333,1785.167H82.119c-44.068,0-79.922-36.348-79.922-81.023V761.958c0-44.678,35.854-81.024,79.922-81.024h141.214c44.068,0,79.921,36.346,79.921,81.024v942.185C303.254,1748.819,267.401,1785.167,223.333,1785.167z M708.974,1785.167H567.755c-44.066,0-79.917-38.839-79.917-86.578V651.512c0-47.74,35.852-86.579,79.917-86.579h141.218c44.066,0,79.917,38.839,79.917,86.579v1047.077C788.891,1746.328,753.04,1785.167,708.974,1785.167z M1194.621,1785.167h-141.21c-44.072,0-79.926-31.604-79.926-70.452V972.037c0-38.848,35.854-70.453,79.926-70.453h141.21c44.072,0,79.926,31.605,79.926,70.453v742.678C1274.547,1753.563,1238.693,1785.167,1194.621,1785.167z M1680.271,1785.167h-141.219c-44.067,0-79.917-38.839-79.917-86.578V651.512c0-47.74,35.85-86.579,79.917-86.579h141.219c44.072,0,79.926,38.839,79.926,86.579v1047.077C1760.196,1746.328,1724.343,1785.167,1680.271,1785.167z"/>
+            </svg>
+            <div style="font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Statistics</div>
+        </div>
+        """, unsafe_allow_html=True)
         
         if check_api_key() and st.session_state.pipeline:
             stats = st.session_state.stats
             
-            # Scenes metric
+            # Scenes metric with icon
             st.markdown(f"""
-            <div style="background: var(--bg-card); padding: 1rem; border-radius: 0.75rem; margin-bottom: 0.75rem; border: 1px solid var(--border);">
-                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Total Scenes</div>
-                <div style="font-size: 1.75rem; font-weight: 700; color: var(--text-primary);">{stats.get("total_scenes", 0):,}</div>
+            <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.75rem; margin-bottom: 0.75rem; border: 1px solid var(--border);">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <svg width="14" height="14" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                        <path stroke="currentColor" stroke-width="2" fill="none" d="M3.945,3 L16.3335682,3 C16.5841978,3 16.8245622,3.09956232 17.0017841,3.2767842 L20.7232158,7.4482158 C20.9004377,7.62543768 21,7.86580202 21,8.1164316 L21,20.055 C21,20.5769091 20.5769091,21 20.055,21 L3.945,21 C3.42309091,21 3,20.5769091 3,20.055 L3,3.945 C3,3.42309091 3.42309091,3 3.945,3 Z M12,16.5 C13.3807119,16.5 14.5,15.3807119 14.5,14 C14.5,12.6192881 13.3807119,11.5 12,11.5 C10.6192881,11.5 9.5,12.6192881 9.5,14 C9.5,15.3807119 10.6192881,16.5 12,16.5 Z"/>
+                    </svg>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">Indexed Content</div>
+                </div>
+                <div style="font-size: 1.75rem; font-weight: 700; color: var(--accent-cyan); text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);">{stats.get("total_scenes", 0):,}</div>
+                <div style="font-size: 0.7rem; color: var(--text-tertiary); margin-top: 0.25rem;">Total Scenes</div>
             </div>
             """, unsafe_allow_html=True)
             
             # Videos metric
             st.markdown(f"""
-            <div style="background: var(--bg-card); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--border);">
-                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Videos Indexed</div>
+            <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--border);">
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Videos Indexed</div>
                 <div style="font-size: 1.75rem; font-weight: 700; color: var(--text-primary);">{stats.get("unique_videos", 0)}</div>
             </div>
             """, unsafe_allow_html=True)
@@ -638,7 +654,7 @@ def render_sidebar():
             st.metric("Clips Indexed", st.session_state.indexed_clips)
         else:
             st.markdown("""
-            <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 0.75rem; border-left: 4px solid var(--warning); text-align: center;">
+            <div style="background: rgba(230, 74, 25, 0.1); padding: 1rem; border-radius: 0.75rem; border-left: 4px solid var(--warning); text-align: center;">
                 <div style="font-size: 0.875rem; color: var(--warning); font-weight: 600;">System Offline</div>
                 <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Initialize engine to start</div>
             </div>
