@@ -816,14 +816,16 @@ def render_results_grid():
     
     # Display results in modern cards
     for i, res in enumerate(results):
-        # Extract data
+        # Extract data - use correct keys from search results
         score = res.get("score", 0)
         video_path = res.get("clip_path", "")
         thumb = res.get("thumbnail_path", "")
         mood = res.get("mood", "")
         scene_type = res.get("scene_type", "")
         description = res.get("description", "")
-        time_str = f"{format_time(res.get('start_time',0))} - {format_time(res.get('end_time',0))}"
+        start_time = res.get("start_time", 0)
+        end_time = res.get("end_time", 0)
+        time_str = f"{format_time(start_time)} - {format_time(end_time)}"
         tags = res.get("tags", [])
         
         # Create expandable card with modern styling
@@ -834,13 +836,13 @@ def render_results_grid():
             col1, col2 = st.columns([1, 1])
             
             with col1:
-                # Video player
+                # Video player - prioritize video clip over thumbnail
                 if video_path and os.path.exists(video_path):
                     st.video(video_path)
                 elif thumb and os.path.exists(thumb):
                     st.image(thumb, use_container_width=True)
                 else:
-                    st.warning("Media not found")
+                    st.warning(f"Media not found\nClip: {video_path}\nThumb: {thumb}")
                 
                 # Metadata badges
                 st.markdown(f"""
@@ -879,12 +881,10 @@ def render_results_grid():
                     
                     # Try to get full analysis from ChromaDB
                     try:
-                        from search.vector_search import get_scene_engine
-                        engine = get_scene_engine()
                         scene_id = res.get("id", "")
                         
-                        if scene_id:
-                            full_scene = engine.get_scene(scene_id)
+                        if scene_id and st.session_state.search_engine:
+                            full_scene = st.session_state.search_engine.get_scene(scene_id)
                             if full_scene and full_scene.get("document"):
                                 st.markdown("**Full Searchable Text**")
                                 st.text(full_scene["document"])
