@@ -27,9 +27,8 @@ CineSearch AI transforms your video library into a searchable database. Upload v
 - **Efficient**: 5 scenes process in ~5-10 seconds
 - **Scalable**: Handles large video libraries
 
-### User Interfaces
-- **Gradio UI** (Recommended): Professional, fast, production-ready
-- **Streamlit UI**: Alternative interface for data exploration
+### User Interface
+- **Streamlit UI**: Professional, dynamic, production-ready interface with instant interactions
 
 ## Quick Start
 
@@ -63,13 +62,6 @@ Get your API key from: https://aistudio.google.com/
 
 ### 3. Run Application
 
-#### Gradio UI (Recommended)
-```bash
-python app_gradio.py
-```
-Opens at: http://localhost:7860
-
-#### Streamlit UI
 ```bash
 streamlit run app.py
 ```
@@ -117,7 +109,7 @@ Example queries:
 - **Embeddings**: Sentence Transformers
 - **Vector DB**: ChromaDB
 - **Video Processing**: FFmpeg, OpenCV
-- **UI**: Gradio (primary), Streamlit (alternative)
+- **UI**: Streamlit
 - **GPU**: CUDA acceleration support
 
 ## Performance
@@ -139,13 +131,11 @@ Example queries:
 ## Documentation
 
 ### Getting Started
-- [Quick Start Guide](GRADIO_QUICK_START.md) - Get up and running
+- [Quick Start Guide](QUICK_START.md) - Get up and running
 - [Installation Guide](INSTALLATION_GUIDE.md) - Detailed setup
-- [GPU Setup](GPU_SETUP_INSTRUCTIONS.md) - CUDA configuration
 
 ### User Guides
-- [Gradio UI Guide](GRADIO_UI.md) - Using the Gradio interface
-- [UI Comparison](UI_COMPARISON.md) - Streamlit vs Gradio
+- [Getting Started](GETTING_STARTED.md) - Using the interface
 - [Video Downloader](docs/VIDEO_DOWNLOADER.md) - URL processing
 
 ### Technical Documentation
@@ -154,7 +144,6 @@ Example queries:
 - [Implementation Guide](docs/IMPLEMENTATION_GUIDE.md) - Development
 
 ### Troubleshooting
-- [Troubleshooting Guide](TROUBLESHOOTING_GUIDE.md) - Common issues
 - [Issue Resolution](ISSUE_RESOLVED.md) - Recent fixes
 - [Performance](PERFORMANCE_IMPROVEMENTS.md) - Optimization details
 
@@ -162,8 +151,7 @@ Example queries:
 
 ```
 cinesearch-ai/
-├── app.py                  # Streamlit UI
-├── app_gradio.py          # Gradio UI (recommended)
+├── app.py                  # Streamlit UI (main interface)
 ├── ingestion/             # Video processing pipeline
 │   ├── pipeline.py        # Main orchestrator
 │   ├── scene_detector.py  # YOLO scene detection
@@ -306,7 +294,7 @@ See [GPU Setup Guide](GPU_SETUP_INSTRUCTIONS.md)
 - Use YOLO scene detection (faster)
 - Enable GPU for YOLO
 - Process shorter videos first
-- Use Gradio UI (faster than Streamlit)
+- Streamlit UI provides real-time progress
 
 ### Search Performance
 - Index regularly
@@ -331,7 +319,7 @@ Contributions welcome! Please:
 - Google Gemini for AI analysis
 - Ultralytics YOLO for scene detection
 - ChromaDB for vector search
-- Gradio for UI framework
+- Streamlit for UI framework
 
 ## Support
 
@@ -342,12 +330,13 @@ Contributions welcome! Please:
 ## Changelog
 
 ### Latest (v2.0)
-- Added Gradio UI (professional interface)
+- Professional Streamlit UI with dynamic interactions
 - Removed artificial rate limiting (10-20x faster)
 - Fixed JSON parsing issues (100% success rate)
-- Improved UI performance (instant interactions)
+- Improved UI performance (instant expand/collapse)
 - Added robust error handling
 - Enhanced documentation
+- Library management with archive/restore
 
 ### v1.0
 - Initial release

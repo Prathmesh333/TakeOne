@@ -59,7 +59,7 @@ CineSearch AI is an AI-powered video search engine that helps you find footage u
 | AI Analysis | Gemini 2.5 Flash |
 | Vector Database | ChromaDB |
 | Text Embeddings | Sentence Transformers |
-| Web Interface | Gradio (primary), Streamlit (alternative) |
+| Web Interface | Streamlit |
 | GPU Acceleration | CUDA, PyTorch |
 
 ---
@@ -93,14 +93,10 @@ echo "GEMINI_API_KEY=your-key-here" > .env
 ### 4. Run Application
 
 ```bash
-# Gradio UI (recommended)
-python app_gradio.py
-
-# Streamlit UI (alternative)
 streamlit run app.py
 ```
 
-See [Quick Start Guide](../GRADIO_QUICK_START.md) for detailed instructions.
+See [Quick Start Guide](../QUICK_START.md) for detailed instructions.
 
 ---
 
@@ -121,7 +117,6 @@ See [Quick Start Guide](../GRADIO_QUICK_START.md) for detailed instructions.
 ```
 cinesearch-ai/
 ├── app.py                 # Streamlit UI
-├── app_gradio.py         # Gradio UI (recommended)
 ├── docs/                 # This documentation
 │   ├── README.md
 │   ├── ARCHITECTURE.md
@@ -159,8 +154,8 @@ cinesearch-ai/
 - **Better prompts**: Simplified for reliability
 
 ### User Experience
-- **Professional UI**: Clean Gradio interface
-- **Fast interactions**: Instant expand/collapse
+- **Professional UI**: Clean Streamlit interface with dynamic interactions
+- **Fast interactions**: Instant expand/collapse with st.expander()
 - **Better feedback**: Real-time progress tracking
 - **Library management**: Archive and restore features
 
@@ -169,13 +164,11 @@ cinesearch-ai/
 ## Documentation Index
 
 ### Getting Started
-- [Quick Start](../GRADIO_QUICK_START.md) - Get up and running
+- [Quick Start](../QUICK_START.md) - Get up and running
 - [Installation Guide](../INSTALLATION_GUIDE.md) - Detailed setup
-- [GPU Setup](../GPU_SETUP_INSTRUCTIONS.md) - CUDA configuration
 
 ### User Guides
-- [Gradio UI Guide](../GRADIO_UI.md) - Using the interface
-- [UI Comparison](../UI_COMPARISON.md) - Streamlit vs Gradio
+- [Getting Started](../GETTING_STARTED.md) - Using the interface
 - [Video Downloader](./VIDEO_DOWNLOADER.md) - URL processing
 
 ### Technical Documentation
@@ -185,7 +178,6 @@ cinesearch-ai/
 - [YOLO Integration](./YOLO_INTEGRATION.md) - Scene detection
 
 ### Troubleshooting
-- [Troubleshooting Guide](../TROUBLESHOOTING_GUIDE.md) - Common issues
 - [Issue Resolution](../ISSUE_RESOLVED.md) - Recent fixes
 - [Performance](../PERFORMANCE_IMPROVEMENTS.md) - Optimization
 
@@ -202,10 +194,10 @@ cinesearch-ai/
 ## Changelog
 
 ### v2.0 (Latest)
-- Added Gradio UI (professional interface)
+- Professional Streamlit UI with dynamic interactions
 - Removed artificial rate limiting (10-20x faster)
 - Fixed JSON parsing (100% success rate)
-- Improved UI performance (instant interactions)
+- Improved UI performance (instant expand/collapse)
 - Added robust error handling
 - Enhanced documentation
 - Added URL processing support
