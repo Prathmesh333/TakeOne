@@ -1,0 +1,56 @@
+# ============================================================
+# IMPORTANT: CUDA PyTorch Installation Instructions
+# ============================================================
+# Install PyTorch with CUDA support FIRST before other packages:
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# Or use the provided batch file:
+#   install_pytorch_cuda.bat
+#
+# Then install the rest:
+#   pip install -r requirements.txt
+# ============================================================
+
+# Core
+streamlit>=1.30.0
+gradio>=4.0.0
+python-dotenv>=1.0.0
+
+# AI/ML - PyTorch packages excluded (install separately with CUDA)
+# torch>=2.0.0  # EXCLUDED - Install with CUDA first
+# torchvision  # EXCLUDED - Install with CUDA first  
+# torchaudio  # EXCLUDED - Install with CUDA first
+transformers>=4.36.0
+openai>=1.10.0
+chromadb>=0.4.22
+
+# Gemini
+google-generativeai>=0.8.0
+
+# Text Embeddings
+sentence-transformers>=2.2.0
+
+# Video Processing
+opencv-python>=4.9.0
+opencv-python-headless>=4.9.0
+moviepy>=1.0.3
+Pillow>=10.2.0
+
+# Scene Detection
+scenedetect[opencv]>=0.6.0
+# ultralytics>=8.0.0  # EXCLUDED - Can pull torch as dependency
+
+# Video Downloading
+yt-dlp>=2023.10.13
+gdown>=4.7.1
+requests>=2.31.0
+
+# Audio
+# openai-whisper>=20231117  # EXCLUDED - Can pull torch as dependency
+
+# Optional - Emotion Detection
+# deepface>=0.0.79
+
+# Utilities
+numpy>=1.24.0
+tqdm>=4.66.0

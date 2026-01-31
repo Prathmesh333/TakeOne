@@ -1,0 +1,15 @@
+# ============================================================
+# Torch-Dependent Packages
+# ============================================================
+# Install these AFTER PyTorch with CUDA is installed
+# These packages depend on torch and might try to install it
+# ============================================================
+
+# YOLO Object Detection
+ultralytics>=8.0.0
+
+# Audio Transcription
+openai-whisper>=20231117
+
+# Optional - Emotion Detection (uncomment if needed)
+# deepface>=0.0.79

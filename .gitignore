@@ -1,0 +1,194 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+gradio_cine/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# Output directories
+output/
+chroma_db/
+chroma_db_archives/
+test_chroma_db/
+test_output/
+demo/sample_footage/
+
+# Video files (too large for git)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+
+# Audio files
+*.mp3
+*.wav
+*.flac
+*.aac
+
+# Image files (generated)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+
+# Model files (download separately)
+*.pt
+*.pth
+*.onnx
+*.pb
+*.h5
+*.weights
+
+# Database files
+*.sqlite3
+*.db
+*.bin
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+.cache/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Streamlit
+.streamlit/secrets.toml
+
+# ChromaDB
+chroma.sqlite3
+
+# FFmpeg
+ffmpeg.exe
+ffprobe.exe
+
+# Downloaded videos
+downloads/
+
+# Test files
+test_*.mp4
+test_*.jpg
+sample_*.mp4
+
+# Documentation - Keep main docs, ignore Kiro-generated progress files
+*.pdf
+!TakeOne*.pdf
+
+# Kiro-generated documentation (progress/fix tracking)
+AI_SEARCH_AND_FIXES.md
+ALL_OPTIMIZATIONS_COMPLETE.md
+BEFORE_VS_AFTER.md
+CONTEXT_TRANSFER_FIXES.md
+CUDA_FIX_SUMMARY.md
+DOCUMENTATION_UPDATES.md
+ENHANCED_ANALYSIS.md
+FFMPEG_SPEED_OPTIMIZATIONS.md
+FINAL_IMPLEMENTATION.md
+FINAL_UI_AND_JSON_FIXES.md
+FIXES_IMPLEMENTED.md
+FIXES_SUMMARY.md
+GEMINI_KEY_CLEANUP_FIX.md
+GEMINI_ONLY_PIPELINE.md
+GEMINI_RELIABILITY_FIXES.md
+GPU_ACCELERATION_SUMMARY.md
+GPU_SETUP_INSTRUCTIONS.md
+GRADIO_IMPLEMENTATION.md
+GRADIO_PRO_COMPLETE.md
+GRADIO_QUICK_START.md
+GRADIO_UI.md
+IMPLEMENTATION_CHECKLIST.md
+IMPLEMENTATION_COMPLETE.md
+ISSUE_RESOLVED.md
+ISSUES_ANALYSIS.md
+LATEST_FIXES.md
+LIBRARY_MANAGEMENT_FEATURES.md
+LIBRARY_SWITCHING_FEATURE.md
+MAXIMUM_SPEED_ACHIEVED.md
+OPTIMIZED_FLOW.md
+PERFORMANCE_IMPROVEMENTS.md
+PROFESSIONAL_SUMMARY.md
+PROGRESS_UI_FIX.md
+PROJECT_STATUS.md
+PROMPT_FIX.md
+QUICK_TEST.md
+SETUP_COMPLETE.md
+SUBMISSION.md
+TROUBLESHOOTING_GUIDE.md
+UI_COMPARISON.md
+UI_IMPROVEMENTS.md
+UI_URL_SUPPORT.md
+URL_FEATURE_SUMMARY.md
+URL_PROCESSING_GUIDE.md
+WHAT_TO_EXPECT.md
+YOLO_IMPROVEMENTS_SUMMARY.md
+YOLO_QUICK_START.md
+
+# Backup files
+*.bak
+*.backup
+*_backup/
+*_old/
+
+# Archive folders
+*_archive_*/
+
+# Response files
+responses.txt
+RESPONSES*.txt
