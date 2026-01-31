@@ -837,12 +837,37 @@ def render_results_grid():
             
             with col1:
                 # Video player - prioritize video clip over thumbnail
-                if video_path and os.path.exists(video_path):
-                    st.video(video_path)
-                elif thumb and os.path.exists(thumb):
-                    st.image(thumb, use_container_width=True)
+                # Debug: Show what paths we're trying to use
+                st.caption(f"🔍 Debug: Clip path: {video_path}")
+                
+                if video_path:
+                    # Convert to absolute path if relative
+                    if not os.path.isabs(video_path):
+                        video_path = os.path.abspath(video_path)
+                    
+                    st.caption(f"🔍 Absolute path: {video_path}")
+                    st.caption(f"🔍 File exists: {os.path.exists(video_path)}")
+                    
+                    if os.path.exists(video_path):
+                        # Try to read and display the video
+                        try:
+                            with open(video_path, 'rb') as video_file:
+                                video_bytes = video_file.read()
+                            st.video(video_bytes)
+                        except Exception as e:
+                            st.error(f"Error loading video: {e}")
+                            st.caption(f"Path: {video_path}")
+                    else:
+                        st.warning(f"Video file not found at: {video_path}")
+                elif thumb:
+                    if not os.path.isabs(thumb):
+                        thumb = os.path.abspath(thumb)
+                    if os.path.exists(thumb):
+                        st.image(thumb, use_container_width=True)
+                    else:
+                        st.warning(f"Thumbnail not found at: {thumb}")
                 else:
-                    st.warning(f"Media not found\nClip: {video_path}\nThumb: {thumb}")
+                    st.warning("No media path provided")
                 
                 # Metadata badges
                 st.markdown(f"""
