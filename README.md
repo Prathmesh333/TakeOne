@@ -595,41 +595,14 @@ Contributions welcome! Please:
 
 ---
 
-## Changelog
-
-### v3.0 (Current - Hackathon Submission)
-- ✅ Script-to-sequence search (unique feature!)
-- ✅ Multilingual support (50+ languages)
-- ✅ Professional cinema-themed UI
-- ✅ Real-time progress tracking
-- ✅ GPU acceleration (CUDA)
-- ✅ Library management (archive/restore)
-- ✅ Gemini 2.5 Flash integration
-- ✅ YOLO scene detection
-- ✅ Production-ready code
-
-### v2.0
-- Professional Streamlit UI
-- Removed artificial rate limiting (10-20x faster)
-- Fixed JSON parsing (100% success rate)
-- Enhanced documentation
-
-### v1.0
-- Initial release
-- Basic video processing
-- Gemini analysis
-- Simple search
-
----
-
 
 
 ## Built for Cine AI Hackfest
 
 **Event:** Cine AI Hackfest by HackCulture  
 **Challenge:** Help content creators find the perfect shot from their video libraries  
-**Solution:** AI-powered semantic search with unique script-matching capabilities  
-**Innovation:** Script-to-sequence search - no competitor offers this
+**Solution:** AI-powered semantic video search with unique script-matching capabilities  
+**Innovation:** Script-to-sequence search 
 
 **Impact:** 85-90% time savings for filmmakers and content creators
 
@@ -644,5 +617,5 @@ Contributions welcome! Please:
 
 ---
 
-**TakeOne - Stop searching. Start creating.**
+**TakeOne - Find the Perfect Shot, Instantly**
 
