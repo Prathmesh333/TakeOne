@@ -102,7 +102,7 @@ Opens at: http://localhost:8501
 ### 4. Quick Test
 
 **Download test video (10 seconds):**
-https://www.pexels.com/video/pouring-coffee-in-a-cup-2795750/
+https://www.pexels.com/video/pouring-hot-water-on-coffee-7658024/
 
 **Upload it, then try Script Search:**
 ```
