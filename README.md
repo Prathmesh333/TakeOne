@@ -2,21 +2,7 @@
 
 **Find the Perfect Shot, Instantly**
 
-Built for Cine AI Hackfest by HackCulture
-
 AI-powered video search engine that transforms video libraries into searchable databases. Upload videos and search with natural language in any language.
-
----
-
-## Hackathon Information
-
-**Event:** Cine AI Hackfest  
-**Organizer:** HackCulture  
-**Website:** https://hackculture.io/hackathons/cine-ai-hackfest  
-**Challenge:** Help content creators find the perfect shot from their video libraries
-
-**Team:** Vanguard  
-**Repository:** https://github.com/Prathmesh333/TakeOne
 
 ---
 
