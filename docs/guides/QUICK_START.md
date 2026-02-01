@@ -13,6 +13,12 @@ streamlit run app.py
 
 ## 3. Process a Video
 
+### 🎯 Quick Test (Recommended):
+**Download this 10-second video first:**
+https://www.pexels.com/video/pouring-coffee-in-a-cup-2795750/
+
+Then upload it below ⬇️
+
 ### From File:
 1. Go to **📁 Library** tab
 2. Upload video file
@@ -22,15 +28,35 @@ streamlit run app.py
 ### From URL:
 1. Go to **📁 Library** tab
 2. Click **"From URL"** tab
-3. Paste YouTube URL
+3. Paste video URL (Pexels recommended)
 4. Click **"Process from URL"**
 
+**Note:** YouTube URLs can be unreliable. See `TEST_VIDEOS_PEXELS.md` for working test videos.
+
 ## 4. Search
+
+### Try Script Search with Test Video:
+If you processed the coffee video, try this script:
+```
+A coffee cup sits on a table.
+Hot coffee is poured into the cup.
+Steam rises from the fresh coffee.
+```
+
+### Regular Search:
 1. Go to **🏠 Home** tab
 2. Enter search query (e.g., "person walking")
 3. Click **"Search"**
 4. View results with thumbnails
 5. Click **"Show Full Analysis"** for details
+
+### Script Sequence Search:
+1. Select **"Script Sequence Search"** mode
+2. Paste multi-line script (one action per line)
+3. Click **"Search Script"**
+4. Get 3 options per action
+
+**Multilingual:** Type in any language - AI translates automatically!
 
 ---
 
@@ -57,6 +83,18 @@ Status: 📹 video.mp4 - Gemini Analysis: 3/5
 - Scene type, mood badges
 - Description and tags
 - **"Show Full Analysis"** button for complete metadata
+
+---
+
+## Test Videos
+
+**See `TEST_VIDEOS_PEXELS.md` for:**
+- 5 working video links (10-20 seconds each)
+- Test scripts for each video
+- Multilingual examples
+- Step-by-step testing guide
+
+**Quick test:** Coffee video (10s) - perfect for first test!
 
 ---
 

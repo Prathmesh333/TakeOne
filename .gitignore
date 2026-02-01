@@ -131,7 +131,8 @@ sample_*.mp4
 *.pdf
 !TakeOne*.pdf
 
-# Kiro-generated documentation (progress/fix tracking)
+# Kiro AI - generated documentation (progress/fix tracking)
+.kiro/docs/
 kiro_docs/
 
 # Backup files

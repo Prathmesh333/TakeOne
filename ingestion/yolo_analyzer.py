@@ -45,9 +45,9 @@ class YOLOAnalyzer:
                 # Auto-detect and use GPU if available
                 if self.use_gpu and torch.cuda.is_available():
                     self._model.to('cuda')
-                    logger.info("✅ YOLO running on GPU (CUDA)")
+                    logger.info(" YOLO running on GPU (CUDA)")
                 elif self.use_gpu:
-                    logger.warning("⚠️ GPU requested but CUDA not available, using CPU")
+                    logger.warning(" GPU requested but CUDA not available, using CPU")
                 else:
                     logger.info("YOLO running on CPU")
                     

@@ -347,10 +347,10 @@ if __name__ == "__main__":
             result = analyze_clip(image_path)
             
             if result['status'] == 'success':
-                print("\n✅ Analysis successful!")
+                print("\n Analysis successful!")
                 print(json.dumps(result['analysis'], indent=2))
             else:
-                print(f"\n❌ Error: {result['error']}")
+                print(f"\n Error: {result['error']}")
                 
         except ValueError as e:
             print(f"\nConfiguration error: {e}")

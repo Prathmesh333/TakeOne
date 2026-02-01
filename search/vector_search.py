@@ -80,11 +80,11 @@ class SceneSearchEngine:
             logger.error("sentence-transformers not installed. Run: pip install sentence-transformers")
             raise
         
-        # Initialize Gemini for query expansion (lazy load)
+        # Initialize Gemini for query expansion and translation (lazy load)
         self._gemini_model = None
     
     def _get_gemini(self):
-        """Lazy load Gemini for query expansion (ONLY used during search, NOT during indexing)."""
+        """Lazy load Gemini for query expansion and translation (ONLY used during search, NOT during indexing)."""
         if self._gemini_model is None:
             try:
                 import google.generativeai as genai
@@ -93,12 +93,72 @@ class SceneSearchEngine:
                 if api_key:
                     genai.configure(api_key=api_key)
                     self._gemini_model = genai.GenerativeModel("gemini-2.5-flash")  # Fixed model name
-                    logger.info("Gemini query expansion enabled with gemini-2.5-flash (for search only)")
+                    logger.info("Gemini query expansion and translation enabled with gemini-2.5-flash (for search only)")
                 else:
-                    logger.warning("GEMINI_API_KEY not set - query expansion disabled")
+                    logger.warning("GEMINI_API_KEY not set - query expansion and translation disabled")
             except Exception as e:
-                logger.warning(f"Could not initialize Gemini for query expansion: {e}")
+                logger.warning(f"Could not initialize Gemini for query expansion and translation: {e}")
         return self._gemini_model
+    
+    def translate_to_english(self, query: str) -> str:
+        """
+        Translate query from any language to English using AI.
+        Handles transliteration and translation automatically.
+        
+        Args:
+            query: Search query in any language
+            
+        Returns:
+            English translation of the query
+        """
+        gemini = self._get_gemini()
+        if not gemini:
+            logger.warning("Translation unavailable - using original query")
+            return query
+        
+        try:
+            prompt = f"""Translate this video search query to English. If it's already in English, return it as-is.
+
+Query: "{query}"
+
+Requirements:
+- Translate to natural, searchable English
+- Preserve the visual and action intent
+- Handle transliteration if needed (e.g., Hindi/Marathi/Tamil script to English)
+- Keep it concise and searchable
+- Focus on visual elements that can be found in video footage
+
+Return ONLY the English translation, no explanation or additional text.
+
+Examples:
+Input: "व्यक्ति सड़क पर चल रहा है" → Output: "person walking on street"
+Input: "ఒక వ్యక్తి కారు దగ్గర నడుస్తున్నాడు" → Output: "person walking near car"
+Input: "person looking worried" → Output: "person looking worried"
+Input: "ಚಿಂತಿತ ಮುಖದ ವ್ಯಕ್ತಿ" → Output: "person with worried face"
+"""
+
+            response = gemini.generate_content(
+                prompt,
+                generation_config={"temperature": 0.3, "max_output_tokens": 100}
+            )
+            
+            translated = response.text.strip()
+            
+            # Remove quotes if present
+            if translated.startswith('"') and translated.endswith('"'):
+                translated = translated[1:-1]
+            if translated.startswith("'") and translated.endswith("'"):
+                translated = translated[1:-1]
+            
+            # Log translation if different from original
+            if translated.lower() != query.lower():
+                logger.info(f"Translated query: '{query}' → '{translated}'")
+            
+            return translated
+            
+        except Exception as e:
+            logger.warning(f"Translation failed: {e} - using original query")
+            return query
     
     def expand_query(self, query: str) -> List[str]:
         """
@@ -471,28 +531,43 @@ human expressing worry and fear"""
         query: str,
         top_k: int = 10,
         filters: Optional[Dict] = None,
-        use_query_expansion: bool = True
+        use_query_expansion: bool = True,
+        auto_translate: bool = True
     ) -> List[Dict]:
         """
         Search for scenes matching a query with AI-powered comprehensive query generation.
+        Supports multilingual queries with automatic translation.
+        
+        Processing Pipeline:
+        1. Translation/Transliteration (any language → English)
+        2. AI Query Enhancement (generate comprehensive variations)
+        3. Semantic Search (find matching footage)
         
         Args:
-            query: Natural language search query
+            query: Natural language search query (in any language)
             top_k: Number of results to return
             filters: Optional metadata filters (e.g., {"mood": "tense"})
             use_query_expansion: Use AI to expand query comprehensively (default: True)
+            auto_translate: Automatically translate non-English queries to English (default: True)
             
         Returns:
             List of matching scenes with scores
         """
-        # Expand query with AI if enabled - generates comprehensive variations
-        if use_query_expansion:
-            queries = self.expand_query_comprehensive(query)
-            logger.info(f"AI generated {len(queries)} comprehensive query variations")
+        # STEP 1: Translation/Transliteration (any language → English)
+        if auto_translate:
+            english_query = self.translate_to_english(query)
+            logger.info(f"Translation complete: '{query}' → '{english_query}'")
         else:
-            queries = [query]
+            english_query = query
         
-        # Search with all query variations
+        # STEP 2: AI Query Enhancement (generate comprehensive variations)
+        if use_query_expansion:
+            queries = self.expand_query_comprehensive(english_query)
+            logger.info(f"AI query enhancement: Generated {len(queries)} comprehensive variations from '{english_query}'")
+        else:
+            queries = [english_query]
+        
+        # STEP 3: Semantic Search with all query variations
         all_results = {}  # Use dict to deduplicate by scene_id
         
         for q in queries:

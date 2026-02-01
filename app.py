@@ -586,15 +586,17 @@ def render_sidebar():
         library_active = st.session_state.active_tab == "Library"
         
         # Home button with smiley icon
-        col1, col2 = st.columns([1, 5])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("""
-            <svg width="20" height="20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
-                <path d="M35 27.869A7.994 7.994 0 0 1 28 32h14a7.994 7.994 0 0 1-7-4.131" fill="currentColor"></path>
-                <circle cx="28" cy="24" r="3" fill="currentColor"></circle>
-                <circle cx="42" cy="24" r="3" fill="currentColor"></circle>
-                <path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2m14 30c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H23c-1.1 0-2-.9-2-2v-.5L16 48V32l5 2.5V34c0-1.1.9-2 2-2h5a8 8 0 0 1 0-16a7.994 7.994 0 0 1 7 4.131A7.994 7.994 0 0 1 42 16a8 8 0 0 1 0 16h4" fill="currentColor"></path>
-            </svg>
+            <div style="display: flex; align-items: center; justify-content: center; height: 38px;">
+                <svg width="16" height="16" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M35 27.869A7.994 7.994 0 0 1 28 32h14a7.994 7.994 0 0 1-7-4.131" fill="currentColor"></path>
+                    <circle cx="28" cy="24" r="3" fill="currentColor"></circle>
+                    <circle cx="42" cy="24" r="3" fill="currentColor"></circle>
+                    <path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2m14 30c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H23c-1.1 0-2-.9-2-2v-.5L16 48V32l5 2.5V34c0-1.1.9-2 2-2h5a8 8 0 0 1 0-16a7.994 7.994 0 0 1 7 4.131A7.994 7.994 0 0 1 42 16a8 8 0 0 1 0 16h4" fill="currentColor"></path>
+                </svg>
+            </div>
             """, unsafe_allow_html=True)
         with col2:
             if st.button("Home", key="nav_home", use_container_width=True, type="primary" if home_active else "secondary"):
@@ -602,12 +604,14 @@ def render_sidebar():
                 st.rerun()
         
         # Library button with book icon
-        col1, col2 = st.columns([1, 5])
+        col1, col2 = st.columns([1, 4])
         with col1:
             st.markdown("""
-            <svg width="20" height="20" viewBox="-0.5 0 21 21" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
-                <path d="M20.9999958,3.25 L20.9999958,19.5018874 C14.9999958,19.1144138 11.9999958,19.6137847 11.9999958,21 C11.9999958,21 11.9999958,9.95538748 11.9999958,5.61908 C11.9999958,3.25632105 14.9999958,2.46662772 20.9999958,3.25 Z M2.99999577,3.25 L2.99999577,19.5018874 L3.74965625,19.4572404 L3.74965625,19.4572404 L4.4667228,19.4222285 L4.4667228,19.4222285 L5.15119541,19.3968519 L5.15119541,19.3968519 L5.80307409,19.3811106 C5.90900437,19.37929 6.01357658,19.3778708 6.1167907,19.3768531 L6.71977848,19.3755647 L6.71977848,19.3755647 L7.29017232,19.3839114 L7.29017232,19.3839114 L7.82797223,19.4018935 L7.82797223,19.4018935 L8.33317821,19.4295108 C8.49614788,19.4403224 8.65368522,19.4527399 8.80579025,19.4667633 L9.24580836,19.5136511 C11.0113131,19.7290903 11.9280175,20.1954475 11.9959215,20.9127226 L11.9999958,20.9661174 L11.9999958,20.9661174 L11.9999958,5.61908 L11.9999958,5.61908 C11.9999958,3.69029719 10.0008288,2.809788 6.00249473,2.97755244 L5.38775087,3.01057916 C5.28279461,3.01739396 5.17658886,3.02486392 5.06913363,3.03298906 L4.40940852,3.08960194 C4.18450223,3.11109358 3.95459802,3.13520591 3.7196959,3.16193892 L2.99999577,3.25 L2.99999577,3.25 Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <div style="display: flex; align-items: center; justify-content: center; height: 38px;">
+                <svg width="16" height="16" viewBox="-0.5 0 21 21" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.9999958,3.25 L20.9999958,19.5018874 C14.9999958,19.1144138 11.9999958,19.6137847 11.9999958,21 C11.9999958,21 11.9999958,9.95538748 11.9999958,5.61908 C11.9999958,3.25632105 14.9999958,2.46662772 20.9999958,3.25 Z M2.99999577,3.25 L2.99999577,19.5018874 L3.74965625,19.4572404 L3.74965625,19.4572404 L4.4667228,19.4222285 L4.4667228,19.4222285 L5.15119541,19.3968519 L5.15119541,19.3968519 L5.80307409,19.3811106 C5.90900437,19.37929 6.01357658,19.3778708 6.1167907,19.3768531 L6.71977848,19.3755647 L6.71977848,19.3755647 L7.29017232,19.3839114 L7.29017232,19.3839114 L7.82797223,19.4018935 L7.82797223,19.4018935 L8.33317821,19.4295108 C8.49614788,19.4403224 8.65368522,19.4527399 8.80579025,19.4667633 L9.24580836,19.5136511 C11.0113131,19.7290903 11.9280175,20.1954475 11.9959215,20.9127226 L11.9999958,20.9661174 L11.9999958,20.9661174 L11.9999958,5.61908 L11.9999958,5.61908 C11.9999958,3.69029719 10.0008288,2.809788 6.00249473,2.97755244 L5.38775087,3.01057916 C5.28279461,3.01739396 5.17658886,3.02486392 5.06913363,3.03298906 L4.40940852,3.08960194 C4.18450223,3.11109358 3.95459802,3.13520591 3.7196959,3.16193892 L2.99999577,3.25 L2.99999577,3.25 Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
             """, unsafe_allow_html=True)
         with col2:
             if st.button("Library", key="nav_library", use_container_width=True, type="primary" if library_active else "secondary"):
@@ -662,10 +666,30 @@ def render_sidebar():
 
 
 def render_home():
-    # Hero Section - Clean and professional
+    # Hero Section - Clean and professional with TakeOne branding
     st.markdown("""
     <div class="hero-container fade-in">
-        <div class="hero-title">Find the perfect shot.</div>
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+            <svg width="80" height="80" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.3));">
+                <defs>
+                    <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#E64A19;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#hero-gradient)" d="M60.131 21.423H35.659l24.279-2.656l1.878-.206l-.224-1.876l-1.53-12.849l-.183-1.524l-1.527-.12l-2.22-.173L55.888 2l-.24.044l-51.923 9.565L2 11.927l.207 1.744l.404 3.397v16.381l.477.029v16.524l1.473.32l52.982 11.516l.746.162l.646-.408l2.191-1.383l.874-.55V21.423h-1.869M55.985 3.884l2.22.174l1.37 11.494l-1.739-2.536l-6.791-8.222l4.94-.91M42.58 6.354l9.299 11.413l-8.489.929l-8.431-10.938l7.621-1.404M28.059 9.029l7.692 10.503l-6.908.756l-7.046-10.105l6.262-1.154m-11.981 2.206l6.482 9.74l-5.731.626l-5.988-9.401l5.237-.965m-5.461 15.844l-2.77-3.601l.096-.184h4.72l-2.046 3.785m1.064 3.165c0 .55-.393.973-.874.946c-.479-.027-.863-.488-.863-1.029s.385-.965.863-.945c.481.018.874.479.874 1.028M4.516 17.246l-.453-3.797l1.961-.361l5.554 9.089l-1.146.125l-2.766.303l-.588-1l-2.562-4.359M6.474 22.8c0 .525-.359.952-.799.957c-.437.002-.787-.414-.787-.931c0-.519.351-.945.787-.957c.439-.011.799.406.799.931m-.799 6.213c.439.018.799.457.799.982c0 .525-.359.929-.799.903c-.437-.024-.787-.463-.787-.98c0-.518.35-.922.787-.905m54.456 15.454l-1.867.482l-43.419-5.381v4.129l43.419 6.875l1.867-.797v1.365l-1.867.814l-53.307-8.87v-.948l8.956 1.414v-4.098l-8.956-1.11v-.948l53.307 6.174l1.867-.468v1.367m0-8.235l-1.867.311l-53.307-3.89v-.923l9.713.62l-1.161-1.51l4.27-7.546h5.096l-5.473 9.183l5.727.369l6.006-9.552h6.882l-6.614 9.957l6.905.445l7.319-10.402h8.458L43.94 34.189l8.485.547l5.937-7.888l1.769-3.007v12.391"/>
+            </svg>
+            <svg width="100%" height="80" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 0.5rem;">
+                <defs>
+                    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#E64A19;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="48" font-weight="800" letter-spacing="4.8" fill="url(#text-gradient)" stroke="url(#text-gradient)" stroke-width="0.5">TakeOne</text>
+            </svg>
+        </div>
+        <div style="font-size: 3rem; font-weight: 700; color: #F0F6FC; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">Find the perfect shot.</div>
         <div class="hero-subtitle">AI-powered semantic search for your video footage</div>
     </div>
     """, unsafe_allow_html=True)
@@ -746,39 +770,290 @@ def render_home():
     # Search Bar Area
     st.markdown("### Search Your Footage")
     
+    # Multilingual Support Badge
+    st.markdown("""
+    <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(230, 74, 25, 0.15) 100%); border-radius: 2rem; margin-bottom: 1rem; border: 1px solid rgba(0, 229, 255, 0.3);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z" fill="currentColor" style="color: #00E5FF;"/>
+        </svg>
+        <span style="font-weight: 600; font-size: 0.875rem; color: #00E5FF;">Multilingual Support</span>
+        <span style="font-size: 0.75rem; color: var(--text-secondary); padding-left: 0.5rem; border-left: 1px solid rgba(0, 229, 255, 0.3);">Type in any language - AI translates automatically</span>
+    </div>
+    """, unsafe_allow_html=True)
+    
     col_search, col_opts = st.columns([3, 1])
     
-    with col_search:
-        query = st.text_input(
-            "Search query", 
-            placeholder="e.g. 'person walking past a car' or 'sunset on the beach'", 
-            label_visibility="collapsed"
-        )
+    # Search Mode Selection
+    st.markdown("### Search Mode")
+    search_mode = st.radio(
+        "Choose search type",
+        ["Quick Search", "Script Sequence Search"],
+        horizontal=True,
+        help="Quick Search: Single query | Script Search: Multi-action sequence for video editing"
+    )
     
-    with col_opts:
-        search_clicked = st.button("Search", type="primary", use_container_width=True)
-    
-    # Filters
-    with st.expander("Advanced Filters", expanded=False):
-        f_col1, f_col2, f_col3 = st.columns(3)
-        mood_filter = f_col1.selectbox("Mood", ["Any", "Tense", "Joyful", "Melancholic", "Dramatic"])
-        type_filter = f_col2.selectbox("Scene Type", ["Any", "Dialogue", "Action", "Establishing"])
-        results_count = f_col3.slider("Results", 5, 50, 12)
-
-    # Perform Search
-    if search_clicked and query:
-        perform_search(query, mood_filter, type_filter, results_count)
+    if search_mode == "Script Sequence Search":
+        st.markdown("""
+        <div style="background: rgba(0, 229, 255, 0.1); padding: 1rem; border-radius: 0.75rem; border-left: 4px solid var(--accent-cyan); margin-bottom: 1rem;">
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">🎬 Script-to-Sequence Search</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                Paste your script with multiple actions <strong>in any language</strong>. The system will:
+                <br>• Translate/transliterate to English automatically
+                <br>• Break it down into sequential actions with AI
+                <br>• Enhance each query for better matches
+                <br>• Return matching footage <strong>in order</strong> - perfect for video editing workflow!
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
-    # Render Results Grid
-    if st.session_state.search_results:
-        st.markdown("---")
-        st.markdown(f"### Search Results ({len(st.session_state.search_results)} found)")
-        render_results_grid()
-    else:
-        # Default / Empty State
-        st.markdown("---")
-        st.markdown("### Try these examples:")
-        render_examples()
+        script_text = st.text_area(
+            "Paste your script here (any language supported)",
+            placeholder="""Example (English):
+A person walks down a busy city street, looking worried.
+They stop and check their phone with a concerned expression.
+Cut to a close-up of the phone screen showing a message.
+The person starts running through the crowd.
+They arrive at a building and rush inside.
+
+उदाहरण (हिंदी):
+एक व्यक्ति व्यस्त शहर की सड़क पर चिंतित दिख रहा है।
+वे रुकते हैं और चिंतित चेहरे के साथ अपना फोन देखते हैं।""",
+            height=200,
+            help="Enter your script with multiple actions/scenes in ANY language. AI will translate and parse automatically."
+        )
+        
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            results_per_action = st.slider("Results per action", 1, 5, 3, help="Number of footage options for each action")
+        with col2:
+            script_search_clicked = st.button("Search Script", type="primary", use_container_width=True)
+        
+        if script_search_clicked and script_text:
+            perform_script_search(script_text, results_per_action)
+        
+        # Render Script Results
+        if st.session_state.get("script_search_results"):
+            render_script_results()
+    
+    else:  # Quick Search mode
+        col_search, col_opts = st.columns([4, 1])
+        
+        with col_search:
+            query = st.text_input(
+                "Search query (any language)", 
+                placeholder="e.g. 'person walking past a car' | 'व्यक्ति कार के पास चल रहा है' | 'వ్యక్తి కారు దగ్గర నడుస్తున్నాడు'", 
+                label_visibility="collapsed",
+                help="Type your search in ANY language - AI will translate and enhance automatically"
+            )
+        
+        with col_opts:
+            search_clicked = st.button("Search", type="primary", use_container_width=True)
+        
+        # Filters
+        with st.expander("Advanced Filters", expanded=False):
+            f_col1, f_col2, f_col3 = st.columns(3)
+            mood_filter = f_col1.selectbox("Mood", ["Any", "Tense", "Joyful", "Melancholic", "Dramatic"])
+            type_filter = f_col2.selectbox("Scene Type", ["Any", "Dialogue", "Action", "Establishing"])
+            results_count = f_col3.slider("Results", 5, 50, 12)
+
+        # Perform Search
+        if search_clicked and query:
+            perform_search(query, mood_filter, type_filter, results_count)
+            
+        # Render Results Grid
+        if st.session_state.search_results:
+            st.markdown("---")
+            st.markdown(f"### Search Results ({len(st.session_state.search_results)} found)")
+            render_results_grid()
+        else:
+            # Default / Empty State
+            st.markdown("---")
+            st.markdown("### Try these examples:")
+            render_examples()
+
+
+def perform_script_search(script_text, results_per_action):
+    """Perform script-to-sequence search."""
+    if not st.session_state.search_engine:
+        st.warning("Please initialize the engine first")
+        return
+    
+    from search.script_search import ScriptSequenceSearch
+    
+    with st.spinner("🎬 Parsing script into sequential actions..."):
+        script_search = ScriptSequenceSearch(st.session_state.search_engine)
+        results = script_search.search_script_sequence(
+            script_text,
+            results_per_action=results_per_action,
+            use_query_expansion=True
+        )
+        
+        st.session_state.script_search_results = results
+        
+        if results["status"] == "success":
+            st.success(f"✅ Found {results['total_actions']} actions with {results['total_matches']} total matches!")
+        else:
+            st.error(f"❌ {results.get('error', 'Search failed')}")
+
+
+def render_script_results():
+    """Render script search results in sequential order."""
+    results = st.session_state.get("script_search_results")
+    
+    if not results or results["status"] != "success":
+        return
+    
+    st.markdown("---")
+    st.markdown(f"### 🎬 Script Sequence Results")
+    st.markdown(f"**{results['total_actions']} Actions** • **{results['total_matches']} Total Matches**")
+    
+    # Export options
+    col1, col2, col3 = st.columns([2, 1, 1])
+    with col1:
+        st.markdown("**Edit Sequence Ready** - Results are in script order")
+    with col2:
+        if st.button("📋 Copy Edit List", use_container_width=True):
+            from search.script_search import ScriptSequenceSearch
+            script_search = ScriptSequenceSearch(st.session_state.search_engine)
+            edit_list = script_search.export_edit_sequence(results, format="text")
+            st.code(edit_list, language="text")
+    with col3:
+        if st.button("💾 Download CSV", use_container_width=True):
+            from search.script_search import ScriptSequenceSearch
+            script_search = ScriptSequenceSearch(st.session_state.search_engine)
+            csv_data = script_search.export_edit_sequence(results, format="csv")
+            st.download_button(
+                "Download",
+                csv_data,
+                file_name="edit_sequence.csv",
+                mime="text/csv"
+            )
+    
+    st.markdown("---")
+    
+    # Display each action in sequence
+    for action_result in results["results"]:
+        seq = action_result["sequence"]
+        action = action_result["action"]
+        matches = action_result["matches"]
+        
+        # Action header with sequence number
+        st.markdown(f"""
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.75rem; border-left: 4px solid var(--accent-cyan); margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="background: var(--accent-cyan); color: var(--bg-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem;">
+                    {seq}
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.25rem;">{action['action']}</div>
+                    <div style="font-size: 0.875rem; color: var(--text-secondary);">{action.get('description', '')}</div>
+                </div>
+                <div style="background: rgba(0, 229, 255, 0.15); padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 600; color: var(--accent-cyan);">
+                    {len(matches)} options
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Display matches for this action
+        if matches:
+            cols = st.columns(min(len(matches), 3))
+            for i, match in enumerate(matches):
+                with cols[i % 3]:
+                    render_match_card(match, i + 1, seq)
+        else:
+            st.warning(f"No matches found for action {seq}")
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+
+
+def render_match_card(match, option_num, sequence_num):
+    """Render a single match card for script results using the same format as normal search."""
+    # Extract data - use correct keys from search results
+    score = match.get("score", 0)
+    video_path = match.get("clip_path", "")
+    thumb = match.get("thumbnail_path", "")
+    mood = match.get("mood", "")
+    scene_type = match.get("scene_type", "")
+    description = match.get("description", "")
+    start_time = match.get("start_time", 0)
+    end_time = match.get("end_time", 0)
+    time_str = f"{format_time(start_time)} - {format_time(end_time)}"
+    tags = match.get("tags", [])
+    
+    # Create expandable card with modern styling (same as normal search)
+    with st.expander(
+        f"Option {option_num} • {int(score*100)}% Match • {scene_type.title() if scene_type else 'Scene'}", 
+        expanded=(option_num==1)
+    ):
+        col1, col2 = st.columns([1, 1])
+        
+        with col1:
+            # Video player - prioritize video clip over thumbnail
+            if video_path:
+                # Convert to absolute path if relative
+                if not os.path.isabs(video_path):
+                    video_path = os.path.abspath(video_path)
+                
+                if os.path.exists(video_path):
+                    # Try to read and display the video
+                    try:
+                        with open(video_path, 'rb') as video_file:
+                            video_bytes = video_file.read()
+                        st.video(video_bytes)
+                    except Exception as e:
+                        st.error(f"Error loading video: {e}")
+                else:
+                    st.warning(f"Video file not found")
+            elif thumb:
+                if not os.path.isabs(thumb):
+                    thumb = os.path.abspath(thumb)
+                if os.path.exists(thumb):
+                    st.image(thumb, use_container_width=True)
+                else:
+                    st.warning(f"Thumbnail not found")
+            else:
+                st.warning("No media path provided")
+            
+            # Metadata badges
+            st.markdown(f"""
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span class="badge badge-score">{int(score*100)}% Match</span>
+                {f'<span class="badge badge-mood">{mood}</span>' if mood else ''}
+                {f'<span class="badge badge-type">{scene_type}</span>' if scene_type else ''}
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown(f"""
+            <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--bg-card); border-radius: 0.5rem; border: 1px solid var(--border);">
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">TIMESTAMP</div>
+                <div style="font-weight: 600;">{time_str}</div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            # Description
+            st.markdown("**Description**")
+            st.markdown(f"""
+            <div style="padding: 1rem; background: var(--bg-card); border-radius: 0.5rem; border: 1px solid var(--border); margin-bottom: 1rem;">
+                {description if description else "No description available"}
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Tags
+            if tags and len(tags) > 0:
+                st.markdown("**Tags**")
+                tag_html = " ".join([f'<span class="tag">{tag}</span>' for tag in tags[:15]])
+                st.markdown(f'<div style="margin-bottom: 1rem;">{tag_html}</div>', unsafe_allow_html=True)
+            
+            # File path details
+            with st.expander("📁 File Details", expanded=False):
+                st.code(video_path, language="text")
+    
+    if description:
+        with st.expander("Description", expanded=False):
+            st.markdown(f"<div style='font-size: 0.875rem;'>{description}</div>", unsafe_allow_html=True)
+
 
 def render_examples():
     examples = [

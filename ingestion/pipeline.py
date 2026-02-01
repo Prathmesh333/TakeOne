@@ -258,7 +258,7 @@ class TakeOnePipeline:
                 "clips_total": len(scenes)
             }
             
-            logger.info(f"  ✅ Extracted {len(clips)}/{len(scenes)} clips")
+            logger.info(f"   Extracted {len(clips)}/{len(scenes)} clips")
             
             if progress_callback:
                 progress_callback("Clip Extraction", len(clips), len(scenes))
@@ -286,9 +286,9 @@ class TakeOnePipeline:
                 "with_yolo_context": yolo_contexts
             }
             
-            logger.info(f"  ✅ Generated {thumbs_created} thumbnails")
+            logger.info(f"   Generated {thumbs_created} thumbnails")
             if yolo_contexts > 0:
-                logger.info(f"  ✅ YOLO context available for {yolo_contexts} clips")
+                logger.info(f"   YOLO context available for {yolo_contexts} clips")
             
             if progress_callback:
                 progress_callback("Thumbnails", thumbs_created, len(clips))
