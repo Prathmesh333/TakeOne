@@ -1471,9 +1471,7 @@ def render_library():
                                                 st.caption(f"{time_str}")
                                                 
                                                 if clip['scene_type']:
-                                                    st.markdown(f"""
-                                                    <span class="badge badge-type">{clip['scene_type']}</span>
-                                                    """, unsafe_allow_html=True)
+                                                    st.markdown(f'<span class="badge badge-type">{clip['scene_type']}</span>', unsafe_allow_html=True)
                                                 
                                                 # Truncated description
                                                 st.markdown(f"""
