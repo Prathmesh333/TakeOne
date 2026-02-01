@@ -15,7 +15,7 @@ AI-powered video search engine that transforms video libraries into searchable d
 **Website:** https://hackculture.io/hackathons/cine-ai-hackfest  
 **Challenge:** Help content creators find the perfect shot from their video libraries
 
-**Team:** [Your Team Name]  
+**Team:** Vanguard  
 **Repository:** https://github.com/Prathmesh333/TakeOne
 
 ---
@@ -314,9 +314,6 @@ cinesearch-ai/
 │   ├── testing/               # Testing & examples
 │   │   ├── TEST_VIDEOS_PEXELS.md # Test videos
 │   │   └── SCRIPT_SEARCH_EXAMPLES.md # Examples
-│   ├── hackathon/             # Hackathon materials
-│   │   ├── PRESENTATION_CONTENT.md # Presentation
-│   │   └── PROJECT_STRUCTURE.md # File tree
 │   ├── ARCHITECTURE.md        # System architecture
 │   ├── API_REFERENCE.md       # API docs
 │   └── YOLO_INTEGRATION.md    # YOLO docs
@@ -326,7 +323,6 @@ cinesearch-ai/
 │   └── thumbnails/            # Scene thumbnails
 ├── chroma_db/                  # Vector database
 ├── TEST_VIDEOS_PEXELS.md      # Test videos and scripts
-├── PRESENTATION_CONTENT.md     # Hackathon presentation
 ├── MULTILINGUAL_FEATURE.md     # Multilingual docs
 └── QUICK_START.md             # Quick start guide
 ```
@@ -479,17 +475,11 @@ If False, see [GPU Setup Guide](.kiro/docs/02_GPU_SETUP_INSTRUCTIONS.md)
 - [YOLO Integration](docs/YOLO_INTEGRATION.md) - Scene detection
 - [Video Downloader](docs/VIDEO_DOWNLOADER.md) - URL processing
 
-### Hackathon Materials
-- [Presentation](docs/hackathon/PRESENTATION_CONTENT.md) - 10-slide deck ⭐
-- [Project Structure](docs/hackathon/PROJECT_STRUCTURE.md) - File organization
 
 ### Development Docs (Kiro AI)
 - [GPU Setup](.kiro/docs/02_GPU_SETUP_INSTRUCTIONS.md) - CUDA configuration
 - [All Fixes](.kiro/docs/52_ALL_FIXES_SUMMARY.md) - Development history
 
-### Hackathon Materials
-- [Presentation Content](PRESENTATION_CONTENT.md) - 10-slide deck
-- [Script Search Examples](SCRIPT_SEARCH_EXAMPLES.md) - Demo scripts
 
 ---
 
@@ -582,11 +572,7 @@ Contributions welcome! Please:
 
 ---
 
-## License
 
-This project is built for the TakeOne Hackathon by Google & Gemini.
-
----
 
 ## Acknowledgments
 
@@ -605,7 +591,7 @@ This project is built for the TakeOne Hackathon by Google & Gemini.
 - **Test Videos:** `TEST_VIDEOS_PEXELS.md`
 - **Quick Start:** `QUICK_START.md`
 - **Issues:** GitHub Issues
-- **Hackathon:** TakeOne by Google & Gemini
+
 
 ---
 
@@ -636,20 +622,7 @@ This project is built for the TakeOne Hackathon by Google & Gemini.
 
 ---
 
-## Roadmap
 
-**Post-Hackathon:**
-- [ ] Adobe Premiere / DaVinci Resolve plugins
-- [ ] Audio/dialogue search
-- [ ] Advanced filters (mood, lighting, camera angle)
-- [ ] Team collaboration features
-- [ ] Cloud deployment (SaaS)
-- [ ] Mobile app
-- [ ] Docker containerization
-- [ ] API endpoints
-- [ ] Batch processing improvements
-
----
 
 ## Built for Cine AI Hackfest
 
