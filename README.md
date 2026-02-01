@@ -2,33 +2,48 @@
 
 **Find the Perfect Shot, Instantly**
 
-Built with Gemini 2.5 Flash API for the TakeOne Hackathon
+Built for Cine AI Hackfest by HackCulture
 
-AI-powered video search engine that transforms video libraries into searchable databases. Upload videos and search with natural language - in any language.
+AI-powered video search engine that transforms video libraries into searchable databases. Upload videos and search with natural language in any language.
 
 ---
 
-## 🎯 What is TakeOne?
+## Hackathon Information
 
-TakeOne solves the biggest pain point for content creators: **finding specific clips in hours of footage**. Instead of manually scrubbing through videos, simply search with natural language and get exact clips instantly.
+**Event:** Cine AI Hackfest  
+**Organizer:** HackCulture  
+**Website:** https://hackculture.io/hackathons/cine-ai-hackfest  
+**Challenge:** Help content creators find the perfect shot from their video libraries
+
+**Team:** [Your Team Name]  
+**Repository:** https://github.com/Prathmesh333/TakeOne
+
+---
+
+## Overview
+
+TakeOne solves the biggest pain point for content creators: finding specific clips in hours of footage. Instead of manually scrubbing through videos, simply search with natural language and get exact clips instantly.
 
 **The Problem:** Filmmakers spend 60-70% of their time searching for "that perfect shot"
 
 **The Solution:** AI-powered semantic search that understands video content like a human
 
+**Hackathon:** [Cine AI Hackfest](https://hackculture.io/hackathons/cine-ai-hackfest) by HackCulture
+
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🔍 Semantic Search
+### Semantic Search
 Search your video library with natural language queries:
 - "person walking in rain" → matching clips
 - "sunset over mountains" → golden hour footage
 - "coffee being poured" → exact moments
 
-**Search in <1 second** from hours of footage
+**Search in less than 1 second** from hours of footage
 
-### 📝 Script-to-Sequence Search (Unique!)
+### Script-to-Sequence Search (Unique Innovation)
+Paste a multi-line script, get 3 video options per action:
 Paste a multi-line script, get 3 video options per action:
 ```
 A coffee cup sits on a table.
@@ -37,9 +52,9 @@ Steam rises from the fresh coffee.
 ```
 **Result:** 3 clip choices for each line - mix and match for perfect sequences
 
-**No competitor offers this feature!**
+**No competitor offers this feature**
 
-### 🌍 Multilingual AI
+### Multilingual AI
 Search in **any language** - Hindi, Tamil, Spanish, French, Chinese, Arabic, etc.
 - Type in your native language
 - AI translates and enhances automatically
@@ -47,13 +62,13 @@ Search in **any language** - Hindi, Tamil, Spanish, French, Chinese, Arabic, etc
 
 **Example:** "कप में कॉफी डाली जा रही है" → finds coffee pouring clips
 
-### ⚡ GPU-Accelerated Processing
+### GPU-Accelerated Processing
 - CUDA support for 2-3x faster processing
 - Parallel Gemini API calls (no rate limiting)
-- 10-second video: ~30 seconds to process
-- 2-minute video: ~50 seconds
+- 10-second video: approximately 30 seconds to process
+- 2-minute video: approximately 50 seconds
 
-### 🎨 Professional UI
+### Professional UI
 - Cinema-themed design (cyan/rust gradient palette)
 - Real-time progress tracking
 - Video playback with timestamps
@@ -62,14 +77,14 @@ Search in **any language** - Hindi, Tamil, Spanish, French, Chinese, Arabic, etc
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Installation
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/cinesearch-ai.git
-cd cinesearch-ai
+git clone https://github.com/Prathmesh333/TakeOne.git
+cd TakeOne
 
 # Create virtual environment
 python -m venv venv
@@ -107,15 +122,15 @@ https://www.pexels.com/video/pouring-hot-water-on-coffee-7658024/
 **Upload it, then try Script Search:**
 ```
 A coffee cup sits on a table.
-Hot coffee is poured into the cup.
+Hot water is poured into the cup.
 Steam rises from the fresh coffee.
 ```
 
-**See `docs/testing/TEST_VIDEOS_PEXELS.md` for more test videos and scripts!**
+**See `docs/testing/TEST_VIDEOS_PEXELS.md` for more test videos and scripts**
 
 ---
 
-## 🎬 How It Works
+## How It Works
 
 ### Processing Pipeline
 
@@ -146,7 +161,7 @@ Natural language queries → vector similarity → ranked results in <1 second
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 **AI Models:**
 - **Gemini 2.5 Flash** - Scene analysis, multilingual translation, query enhancement
@@ -163,7 +178,7 @@ Natural language queries → vector similarity → ranked results in <1 second
 
 ---
 
-## 📖 Usage Guide
+## Usage Guide
 
 ### Processing Videos
 
@@ -215,7 +230,7 @@ Type in any language - AI handles translation automatically!
 
 ---
 
-## 📊 Performance
+## Performance
 
 ### Processing Speed
 | Video Length | Processing Time | Scenes |
@@ -239,7 +254,7 @@ Type in any language - AI handles translation automatically!
 
 ---
 
-## 🎯 Use Cases
+## Use Cases
 
 ### Film Editors
 - Find B-roll footage instantly
@@ -263,7 +278,7 @@ Type in any language - AI handles translation automatically!
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 cinesearch-ai/
@@ -338,7 +353,7 @@ cinesearch-ai/
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -375,7 +390,7 @@ yolo_scene_detection=False
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Run Tests
 
@@ -408,7 +423,7 @@ See `TEST_VIDEOS_PEXELS.md` for:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### GPU Not Detected
 
@@ -446,7 +461,7 @@ If False, see [GPU Setup Guide](.kiro/docs/02_GPU_SETUP_INSTRUCTIONS.md)
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 ### User Guides
 - [Quick Start](docs/guides/QUICK_START.md) - Get up and running fast ⭐
@@ -478,7 +493,7 @@ If False, see [GPU Setup Guide](.kiro/docs/02_GPU_SETUP_INSTRUCTIONS.md)
 
 ---
 
-## 🎨 Features Deep Dive
+## Features Deep Dive
 
 ### Semantic Search
 
@@ -521,7 +536,7 @@ Hindi, Tamil, Telugu, Spanish, French, German, Chinese, Japanese, Korean, Arabic
 
 ---
 
-## 🚀 Performance Optimization
+## Performance Optimization
 
 ### GPU Acceleration
 
@@ -550,7 +565,7 @@ Hindi, Tamil, Telugu, Spanish, French, German, Chinese, Japanese, Korean, Arabic
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! Please:
 1. Fork the repository
@@ -567,13 +582,13 @@ Contributions welcome! Please:
 
 ---
 
-## 📄 License
+## License
 
 This project is built for the TakeOne Hackathon by Google & Gemini.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Google Gemini** - Gemini 2.5 Flash API for AI analysis
 - **Ultralytics** - YOLO v8 for scene detection
@@ -584,7 +599,7 @@ This project is built for the TakeOne Hackathon by Google & Gemini.
 
 ---
 
-## 📞 Support
+## Support
 
 - **Documentation:** See `docs/` folder (organized by category)
 - **Test Videos:** `TEST_VIDEOS_PEXELS.md`
@@ -594,7 +609,7 @@ This project is built for the TakeOne Hackathon by Google & Gemini.
 
 ---
 
-## 📈 Changelog
+## Changelog
 
 ### v3.0 (Current - Hackathon Submission)
 - ✅ Script-to-sequence search (unique feature!)
@@ -621,7 +636,7 @@ This project is built for the TakeOne Hackathon by Google & Gemini.
 
 ---
 
-## 🎯 Roadmap
+## Roadmap
 
 **Post-Hackathon:**
 - [ ] Adobe Premiere / DaVinci Resolve plugins
@@ -636,19 +651,25 @@ This project is built for the TakeOne Hackathon by Google & Gemini.
 
 ---
 
-## 🏆 Built for TakeOne Hackathon
+## Built for Cine AI Hackfest
 
-**Challenge:** Help content creators find the perfect shot from their video libraries
-
-**Solution:** AI-powered semantic search with unique script-matching capabilities
-
-**Innovation:** Script-to-sequence search - no competitor offers this!
+**Event:** Cine AI Hackfest by HackCulture  
+**Challenge:** Help content creators find the perfect shot from their video libraries  
+**Solution:** AI-powered semantic search with unique script-matching capabilities  
+**Innovation:** Script-to-sequence search - no competitor offers this
 
 **Impact:** 85-90% time savings for filmmakers and content creators
 
-**Technology:** Gemini 2.5 Flash + YOLO v8 + ChromaDB
+**Technology Stack:**
+- Gemini 2.5 Flash - Scene analysis and multilingual support
+- YOLO v8 - Intelligent scene detection
+- ChromaDB - Vector similarity search
+- Streamlit - Professional web interface
+- PyTorch with CUDA - GPU acceleration
+
+**Repository:** https://github.com/Prathmesh333/TakeOne
 
 ---
 
-**TakeOne - Stop searching. Start creating.** 🎬✨
+**TakeOne - Stop searching. Start creating.**
 
